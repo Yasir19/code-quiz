@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quize</title>
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <header>
+        <div class= "quiz" id="startQuiz">
+            <h1 class="page-title">Coding Quiz Challenge</h1>
+                <P> Try to answer the following code-related qyestion within the time limit.
+                     keep in mind that incorrect aswers will penalize yourscore/time by ten seconds! </P>
+        </div>
+        <div class="highScore">
+            <p>View Highscore</p>
+        </div>
+        <div class="timer">Timer: 
+            <span id="time">0</span>
+           </div>   
+           <button id="start">Start Quize</button>          
+    </header>
+    <section id="questions" class="question">
+        <h2 id="the-question"></h2>
+        <ul id="choices" class="choice"></ul>
+    </section>
+    <section id="all-done" class="hidden">
+        <h2>All done!</h2>
+        <p> Your final Score is</p> 
+        <p>Rnter initials: <input type="text" id="init"/></p>
+        <button id="submit" class="btn">Submit</button>
+    </section>
+    <script src="./assets/script.js"></script>
+</body>
+</html>
