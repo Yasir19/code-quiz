@@ -40,7 +40,7 @@ var submitBtn =document.getElementById("submit");
 //start the quiz
 var startQuiz = function(){
     // hide the start-quize div
-    var startQuizEl = document.getElementsById("start-quiz");
+    var startQuizEl =document.getElementById("start-quiz");
     startQuizEl.setAttribute("calss", "hide");
 }
-startBtn.addEventListener("click",startQuiz());
+startBtn.addEventListener("onclick",startQuiz);
