@@ -7,12 +7,12 @@ var questions =[
     }, 
     {
         question:"The condition in an if/eles statment is enclosed with____.?",
-        choices:["Quotes","Curly brackets", "Parentheses","Square brackets"],
+        choices:["1-Quotes","2-Curly brackets", "3-Parentheses","4-Square brackets"],
         answer:"parentheses"
     },
     {
         question:"Arrays in HavaScript can be user to store____.?",
-        choices:["Numbers and Strings","Other arrys", "Bolleans", "All of the above"],
+        choices:["1-Numbers and Strings","2-Other arrys", "3-Bolleans", "All of the above"],
         answer:"All of the above"
     },
     {
@@ -38,6 +38,7 @@ var timerEl =document.getElementById("time");
 var startBtn =document.getElementById("start");
 var inputEl= document.getElementById("init");
 var submitBtn =document.getElementById("submit");
+var feedbackEl = document.getElementById("feedback")
 
 
 
@@ -76,12 +77,25 @@ var getQuestion = function(){
           var choicesBtn = document.createElement("button");
           var choicesList =document.createElement("li");
           // choicesBtn.setAttribute("value",choice);
-          choicesBtn.textContent = currentQuestion.choices[i];
+          choicesBtn.textContent = i + 1 + "." + currentQuestion.choices[i];
           console.log(choicesBtn);
           selectionEl.appendChild(choicesList);
           choicesList.appendChild(choicesBtn);
+          choicesBtn.addEventListener("click",answerStatus);
     }
-
-       
 }
+        //check the answerStatus 
+        var answerStatus =function(){
+            var correctAnswer = questions[questionIndex].answer;
+          if(selectionEl.value===correctAnswer){
+              feedbackEl.style.display = "block";
+              feedbackEl.textContent="Correct!"
+          }else{
+            feedbackEl.style.display = "block";
+            feedbackEl.textContent="Wrong!"
+          }
+          getQuestion();
+        }
 startBtn.addEventListener("click",startQuiz);
+
+

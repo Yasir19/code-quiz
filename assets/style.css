@@ -39,7 +39,6 @@ font-family:Verdana, Geneva, Tahoma, sans-serif
     border-radius:12px;
     max-width:300px;
     align-items: center;
-    position :absolute;
     width:200px;
     top:300px;
     right:625px;
@@ -47,6 +46,15 @@ font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 .choice {
     display:block;
+
+}
+ol{
+    padding-left:0;
+}
+li{
+    list-style-type: none;
+    padding:5px;
+
 }
 .btn{
     background-color: #663399;
@@ -59,14 +67,9 @@ font-family:Verdana, Geneva, Tahoma, sans-serif
     top:210px;
 }
 .question{
-    border:3px solid red;
+    border:3px solid red; 
     margin: 80px auto 20px auto;
-    padding:30px;
-    width:100%;
-    max-width: 750px;
-    position: absolute;
-    bottom:1000px;
-    left:400px;
+    padding:30px 100px;
     display: none;
 }
 .hidden{
@@ -80,5 +83,14 @@ font-family:Verdana, Geneva, Tahoma, sans-serif
     display: none;
 }
 .hide{
+    display: none;
+}
+.feedback-style{
+    font-style: italic;
+    font-size:20px;
+    margin-top:30px;
+    padding-top:20px;
+    color:#808080;
+    border-top:2px solid #808080;
     display: none;
 }
