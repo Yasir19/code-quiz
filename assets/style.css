@@ -45,6 +45,9 @@ font-family:Verdana, Geneva, Tahoma, sans-serif
     right:625px;
     
 }
+.choice {
+    display:block;
+}
 .btn{
     background-color: #663399;
     color:white;
@@ -59,10 +62,11 @@ font-family:Verdana, Geneva, Tahoma, sans-serif
     border:3px solid red;
     margin: 80px auto 20px auto;
     padding:30px;
+    width:100%;
     max-width: 750px;
     position: absolute;
-    bottom:500px;
-    left:300px;
+    bottom:1000px;
+    left:400px;
     display: none;
 }
 .hidden{

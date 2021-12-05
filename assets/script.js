@@ -1,4 +1,4 @@
-var currentchoicesIndex =0;
+var questionIndex =0;
 var questions =[
     {
      question:"Commnly used data types Do NOT include",
@@ -32,6 +32,7 @@ var questions =[
 
 //veriable to refrence DOM element 
 var questionEl =document.getElementById("questions-list");
+var theQuestionEl= document.getElementById("the-question");
 var selectionEl =document.getElementById("selection");
 var timerEl =document.getElementById("time");
 var startBtn =document.getElementById("start");
@@ -62,18 +63,25 @@ getQuestion();
 }
 // get question function 
 var getQuestion = function(){
+    // cleare the questionEl and selectionEl
 
-    // loop over the question array 
-    for (var i=0;i< questions.length; i++){
-        questionEl.textContent=questions[i].question;
+    //get cuurent question object from the array 
+    var currentQuestion = questions[questionIndex];
+    //update the-question with the current question 
+    theQuestionEl.textContent=currentQuestion.question;
+    selectionEl.innerHTML="";
+    // loop over the choices array 
+    for (var i=0;i< currentQuestion.choices.length; i++){
+          //create new button for each choise
+          var choicesBtn = document.createElement("button");
+          var choicesList =document.createElement("li");
+          // choicesBtn.setAttribute("value",choice);
+          choicesBtn.textContent = currentQuestion.choices[i];
+          console.log(choicesBtn);
+          selectionEl.appendChild(choicesList);
+          choicesList.appendChild(choicesBtn);
     }
-         //create new button for each choise
-         var choicesBtn = document.createElement("button");
-         // choicesBtn.setAttribute("value",choice);
-         choicesBtn.innerHTML=questions[i]+ questions.choices;
-         //create li element
-         var listItem= document.createElement("li");
-         selectionEl.appendChild(listItem);
-         listItem.appendChild(choicesBtn);
+
+       
 }
 startBtn.addEventListener("click",startQuiz);
