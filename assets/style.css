@@ -32,14 +32,18 @@ font-family:Verdana, Geneva, Tahoma, sans-serif
     top: 12px;
     right:0;
 }
-button{
+ button{
     background-color: #663399;
     color:white;
     font-size:36px;
     border-radius:12px;
+    max-width:300px;
     align-items: center;
     position :absolute;
-    left: 625px;
+    width:200px;
+    top:300px;
+    right:625px;
+    
 }
 .btn{
     background-color: #663399;
@@ -48,16 +52,17 @@ button{
     border-radius:12px;
     align-items: center;
     position :absolute;
-    left: 110px;
-    top:220px;
+    left: 60px;
+    top:210px;
 }
 .question{
     border:3px solid red;
     margin: 80px auto 20px auto;
     padding:30px;
     max-width: 750px;
-    position: relative;
-    bottom:250px;
+    position: absolute;
+    bottom:500px;
+    left:300px;
     display: none;
 }
 .hidden{
@@ -65,8 +70,9 @@ button{
     margin: 80px auto 20px auto;
     padding:30px;
     max-width: 750px;
-    position: relative;
-    bottom:490px;
+    position: absolute;
+    bottom:410px;
+    left:550px;
     display: none;
 }
 .hide{
