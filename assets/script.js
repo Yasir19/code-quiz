@@ -1,5 +1,5 @@
 var questionIndex =0;
-var choicesBtn
+var time;
 var questions =[
     {
      question:"Commnly used data types Do NOT include",
@@ -27,7 +27,7 @@ var questions =[
         answer:"Console.log"
     }
 ];
-
+var timer=questions.length * 15; 
 
 
 
@@ -39,7 +39,10 @@ var timerEl =document.getElementById("time");
 var startBtn =document.getElementById("start");
 var inputEl= document.getElementById("init");
 var submitBtn =document.getElementById("submit");
-var feedbackEl = document.getElementById("feedback")
+var feedbackEl = document.getElementById("feedback");
+var allDoneEl =document.getElementById("all-done");
+var finalScoreEl=document.getElementById("time");
+var clearBtn =document.getElementById("Clear");
 
 
 
@@ -56,11 +59,9 @@ var startQuiz = function(){
     //2- define a variable with Setinterval method that hvae function as unarrgument 
     //3- reduce the timer by one 
     //4- print the timer to the timer element by using textContent method
-    var timer = questions.length * 15; 
-  var time = setInterval(function(){
-    timer--;
-    timerEl.textContent=timer;
-  },1000);
+   time = setInterval(timeLeft,1000);
+   timerEl.textContent=timer;
+
 getQuestion();
 }
 // get question function 
@@ -78,26 +79,86 @@ var getQuestion = function(){
           var choicesList =document.createElement("li");
           // choicesBtn.setAttribute("value",choice);
           choicesBtn.textContent = i + 1 + "." + currentQuestion.choices[i];
-          console.log(choicesBtn);
+          choicesBtn.setAttribute("value",currentQuestion.choices[i]);
           selectionEl.appendChild(choicesList);
           choicesList.appendChild(choicesBtn);
-          choicesBtn.addEventListener("click",answerStatus);
+        //   choicesBtn.addEventListener("click",answerStatus);
+        choicesBtn.onclick = answerStatus;
     }
 }
         //check the answerStatus 
-        var answerStatus =function(choicesBtn){
+        var answerStatus =function(){
             var correctAnswer = questions[questionIndex];
-          if(choicesBtn.target.value===correctAnswer.answer){
+          if(this.value === correctAnswer.answer){
               feedbackEl.style.display = "block";
               feedbackEl.textContent="Correct!"
           }else{
             feedbackEl.style.display = "block";
-            feedbackEl.textContent="Wrong!"
-          
-          }
-          questionIndex++;
-          getQuestion();
+            feedbackEl.textContent = "Wrong!";
+            timer-=15;
         }
+
+        questionIndex++;
+        if(questionIndex ===questions.length){
+            stopQyiz();
+        }else{
+            getQuestion(); 
+        }   
+    }
+    var stopQyiz=function(){
+            clearInterval(time);
+            allDoneEl.style.display="block";
+            finalScoreEl.textContent =timer;
+            questionEl.style.display ="none";
+    }
+// check time function 
+var timeLeft =function(){
+    //update time
+    timer--;
+    timerEl.textContent=timer;
+    //check time 
+    if (timer === 0){
+        stopQyiz()
+    }
+}
+// save highScore 
+var saveScore =function(){
+    // get the value of the input 
+    var initials= inputEl.value.trim()
+    //make sure there is intial
+    if (initials !==""){
+        var highScores = json.parse(window.localStorage.getItem("scores")) || [];
+        var newScore ={
+            score : timer,
+            initials:initials
+        };
+        allDoneEl.style.display="none";
+        finalScoreEl.style.display="block";
+        highScores.push(newScore);
+        window.localStorage.setitem("scores",JSON.stringify(highScores))
+    }
+    //set score
+    var scores = function(){
+        //git score from localstorage or set to empty array
+        var score = json.parse(window.localStorage.getItem("score")) || [];
+        //sort the score
+        score.sort(function(a,b){
+            return b.score - a.score
+        })
+        for (var i = 0; i<score.length; i++){
+            var liItems= document.ceateElement("li")
+            liItems.textContent=score.initials + "-" + score.score;
+            var olEl =document.getElementById("final-score");
+            olEl.appendChild(liItems);
+    }
+    var clearScore = function(){
+        window.localStorage.removeItem("score");
+        window.location.reload();
+    }
+    clearBtn.addEventListener("click",clearScore);
+    scores();
+    }
+}
+       
 startBtn.addEventListener("click",startQuiz);
-
-
+submitBtn.addEventListener("click",saveScore);

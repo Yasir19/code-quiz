@@ -29,3 +29,25 @@ we dont need ul
     var currentQuestion = questions[questionIndex];
     questionEl.textContent=currentQuestion.question;
     var questionIndex= 0;
+    4. Inside the for loop
+   Create a button
+   Create a Li
+   Set the text of the button equal to currentQuestion.choices[i]
+   Add an eventListener to the button
+   Append the button to the Li
+   Append the Li to the selectionEl
+
+
+the-question
+
+
+1:00
+And that should do it!
+1:00
+Good luck!!
+
+
+
+        question:"A very usful tool during development and debugging for printing content to the debugger is:",
+        choices:["JavaScript","Terminal / Bush", "For loops","Console.log"],
+        answer:"console.log" i + 1 + "." +
