@@ -129,13 +129,13 @@ var saveScore =function(){
     var initials= inputEl.value.trim()
     //make sure there is intial
     if (initials !==""){
-        var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+        var highScores = JSON.parse(window.localStorage.getItem("score")) || [];
         var newScore ={
             score : timer,
             initials:initials
         };
         highScores.push(newScore);
-        window.localStorage.setItem("scores",JSON.stringify(scores));
+        window.localStorage.setItem("score",JSON.stringify(scores));
         allDoneEl.style.display="none";
         finalScoreEl.style.display="block";
         scoreEl.style.display="block";
