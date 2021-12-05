@@ -1,18 +1,19 @@
 var questionIndex =0;
+var choicesBtn
 var questions =[
     {
      question:"Commnly used data types Do NOT include",
      choices:["Strings", "Booleans", "Alerts", "Numbers"],
-     answer:"alerts"
+     answer:"Alerts"
     }, 
     {
         question:"The condition in an if/eles statment is enclosed with____.?",
-        choices:["1-Quotes","2-Curly brackets", "3-Parentheses","4-Square brackets"],
-        answer:"parentheses"
+        choices:["Quotes","Curly brackets", "Parentheses","Square brackets"],
+        answer:"Parentheses"
     },
     {
         question:"Arrays in HavaScript can be user to store____.?",
-        choices:["1-Numbers and Strings","2-Other arrys", "3-Bolleans", "All of the above"],
+        choices:["Numbers and Strings","Other arrys", "Bolleans", "All of the above"],
         answer:"All of the above"
     },
     {
@@ -23,7 +24,7 @@ var questions =[
     {
         question:"A very usful tool during development and debugging for printing content to the debugger is:",
         choices:["JavaScript","Terminal / Bush", "For loops","Console.log"],
-        answer:"console.log"
+        answer:"Console.log"
     }
 ];
 
@@ -65,16 +66,15 @@ getQuestion();
 // get question function 
 var getQuestion = function(){
     // cleare the questionEl and selectionEl
-
+    selectionEl.innerHTML="";
     //get cuurent question object from the array 
     var currentQuestion = questions[questionIndex];
     //update the-question with the current question 
     theQuestionEl.textContent=currentQuestion.question;
-    selectionEl.innerHTML="";
     // loop over the choices array 
-    for (var i=0;i< currentQuestion.choices.length; i++){
+    for (var i=0;i<= currentQuestion.choices.length; i++){
           //create new button for each choise
-          var choicesBtn = document.createElement("button");
+          choicesBtn = document.createElement("button");
           var choicesList =document.createElement("li");
           // choicesBtn.setAttribute("value",choice);
           choicesBtn.textContent = i + 1 + "." + currentQuestion.choices[i];
@@ -85,15 +85,17 @@ var getQuestion = function(){
     }
 }
         //check the answerStatus 
-        var answerStatus =function(){
-            var correctAnswer = questions[questionIndex].answer;
-          if(selectionEl.value===correctAnswer){
+        var answerStatus =function(choicesBtn){
+            var correctAnswer = questions[questionIndex];
+          if(choicesBtn.target.value===correctAnswer.answer){
               feedbackEl.style.display = "block";
               feedbackEl.textContent="Correct!"
           }else{
             feedbackEl.style.display = "block";
             feedbackEl.textContent="Wrong!"
+          
           }
+          questionIndex++;
           getQuestion();
         }
 startBtn.addEventListener("click",startQuiz);
