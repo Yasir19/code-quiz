@@ -122,12 +122,12 @@ var timeLeft =function(){
     }
 }
 // save highScore 
-var saveScore =function(){
+var saveScore =function(scores){
     // get the value of the input 
     var initials= inputEl.value.trim()
     //make sure there is intial
     if (initials !==""){
-        var highScores = json.parse(window.localStorage.getItem("scores")) || [];
+        var highScores = JSON.parse(window.localStorage.getItem("scores")) || [];
         var newScore ={
             score : timer,
             initials:initials
@@ -140,7 +140,7 @@ var saveScore =function(){
     //set score
     var scores = function(){
         //git score from localstorage or set to empty array
-        var score = json.parse(window.localStorage.getItem("score")) || [];
+        var score = JSON.parse(window.localStorage.getItem("score")) || [];
         //sort the score
         score.sort(function(a,b){
             return b.score - a.score
