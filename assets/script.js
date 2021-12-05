@@ -1,5 +1,6 @@
 var questionIndex =0;
 var time;
+var score;
 var questions =[
     {
      question:"Commnly used data types Do NOT include",
@@ -43,6 +44,7 @@ var feedbackEl = document.getElementById("feedback");
 var allDoneEl =document.getElementById("all-done");
 var finalScoreEl=document.getElementById("time");
 var clearBtn =document.getElementById("Clear");
+var scoreEl = document.getElementById("sco");
 
 
 
@@ -122,30 +124,31 @@ var timeLeft =function(){
     }
 }
 // save highScore 
-var saveScore =function(scores){
+var saveScore =function(){
     // get the value of the input 
     var initials= inputEl.value.trim()
     //make sure there is intial
     if (initials !==""){
-        var highScores = JSON.parse(window.localStorage.getItem("scores")) || [];
+        var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
         var newScore ={
             score : timer,
             initials:initials
         };
         highScores.push(newScore);
-        window.localStorage.setItem("scores",JSON.stringify(score));
+        window.localStorage.setItem("scores",JSON.stringify(scores));
         allDoneEl.style.display="none";
         finalScoreEl.style.display="block";
+        scoreEl.style.display="block";
     }
     //set score
     var scores = function(){
         //git score from localstorage or set to empty array
-        var score = JSON.parse(window.localStorage.getItem("score")) || [];
+        score = JSON.parse(window.localStorage.getItem("score")) || [];
         //sort the score
         score.sort(function(a,b){
             return b.score - a.score
         })
-        for (var i = 0; i<score.length; i++){
+        for (var i = 0; i<score(a,b).length; i++){
             var liItems= document.ceateElement("li")
             liItems.textContent=score.initials + "-" + score.score;
             var olEl =document.getElementById("final-score");
@@ -155,6 +158,7 @@ var saveScore =function(scores){
         window.localStorage.removeItem("score");
         window.location.reload();
     }
+    
     clearBtn.addEventListener("click",clearScore);
     scores();
     }
