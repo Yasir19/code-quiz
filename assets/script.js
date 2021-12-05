@@ -148,10 +148,10 @@ var saveScore =function(){
         score.sort(function(a,b){
             return b.score - a.score
         })
-        for (var i = 0; i<score(a,b).length; i++){
+        for (var i = 0; i<score; i++){
             var liItems= document.ceateElement("li")
             liItems.textContent=score.initials + "-" + score.score;
-            var olEl =document.getElementById("final-score");
+            var olEl =document.getElementById("sco");
             olEl.appendChild(liItems);
     }
     var clearScore = function(){
@@ -160,8 +160,9 @@ var saveScore =function(){
     }
     
     clearBtn.addEventListener("click",clearScore);
-    scores();
     }
+
+    scores();
 }
        
 startBtn.addEventListener("click",startQuiz);
