@@ -132,10 +132,10 @@ var saveScore =function(){
             score : timer,
             initials:initials
         };
+        highScores.push(newScore);
+        window.localStorage.setItem("scores",JSON.stringify(score));
         allDoneEl.style.display="none";
         finalScoreEl.style.display="block";
-        highScores.push(newScore);
-        window.localStorage.setitem("scores",JSON.stringify(highScores))
     }
     //set score
     var scores = function(){
