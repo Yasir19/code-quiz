@@ -1,6 +1,4 @@
-var questionIndex =0;
-var time;
-var score;
+// questions array stored as objects 
 var questions =[
     {
      question:"Commnly used data types Do NOT include",
@@ -28,7 +26,11 @@ var questions =[
         answer:"Console.log"
     }
 ];
+//variable to keep track of the quiz
 var timer=questions.length * 15; 
+var questionIndex =0;
+var time;
+var score;
 
 
 
@@ -45,7 +47,6 @@ var allDoneEl =document.getElementById("all-done");
 var finalScoreEl=document.getElementById("time");
 var clearBtn =document.getElementById("Clear");
 var scoreEl = document.getElementById("sco");
-var olEl =document.getElementById("highScoreList");
 var highScorEl = document.getElementById("highScorese");
 
 
@@ -59,17 +60,14 @@ var startQuiz = function(){
     //revel quastion
     questionEl.style.display ="block";
     //set timer
-    //1- define timer veriable and returen the question lenghth array * 15 to get 75 second 
-    //2- define a variable with Setinterval method that hvae function as unarrgument 
-    //3- reduce the timer by one 
-    //4- print the timer to the timer element by using textContent method
    time = setInterval(timeLeft,1000);
    timerEl.textContent=timer;
-
+//calling the question function 
 getQuestion();
 }
 // get question function 
 var getQuestion = function(){
+    
     // cleare the questionEl and selectionEl
     selectionEl.innerHTML="";
     //get cuurent question object from the array 
@@ -92,28 +90,43 @@ var getQuestion = function(){
 }
         //check the answerStatus 
         var answerStatus =function(){
+             // get current question object from array
             var correctAnswer = questions[questionIndex];
+            //check the answer correctness
           if(this.value === correctAnswer.answer){
+              //display the feedback element
               feedbackEl.style.display = "block";
+              //diplay correct if the user answer the question 
               feedbackEl.textContent="Correct!"
           }else{
+               //display the feedback element
             feedbackEl.style.display = "block";
+             //diplay wrong if the user did not answer the question
             feedbackEl.textContent = "Wrong!";
+            //reduce the time by 15 if the user did not answer the question
             timer-=15;
         }
-
+        //get the next question
         questionIndex++;
+        // check the question if it get to the last one  
         if(questionIndex ===questions.length){
+            //if the question get to the last one then stop the quiz 
             stopQyiz();
         }else{
+            // continue the question 
             getQuestion(); 
         }   
     }
+    // function to stap the quiz 
     var stopQyiz=function(){
-            clearInterval(time);
-            allDoneEl.style.display="block";
-            finalScoreEl.textContent =timer;
-            questionEl.style.display ="none";
+        // stop the timer 
+        clearInterval(time);
+        // display the end of the quiz screen 
+        allDoneEl.style.display="block";
+        // write the final timing 
+        finalScoreEl.textContent =timer;
+        // hide the question list 
+        questionEl.style.display ="none";  
     }
 // check time function 
 var timeLeft =function(){
@@ -131,50 +144,25 @@ var saveScore =function(){
     var initials= inputEl.value.trim()
     //make sure there is intial
     if (initials !==""){
+        // get saved scores from localstorage, or if not any, set to empty array
         var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+          // format new score object for current user
         var newScore ={
             score : timer,
             initials:initials
         };
+          // save to localstorage
         highScores.push(newScore);
         window.localStorage.setItem("highScores",JSON.stringify(highScores));
-        allDoneEl.style.display="none";
-        feedbackEl.style.display="none";
-        scoreEl.style.display="block";
-    }
-    //set score
-    var scores = function(){
-        //git score from localstorage or set to empty array
-        score = JSON.parse(window.localStorage.getItem("highScores")) || [];
-        //sort the score
-        score.sort(function(a,b){
-            return b.score - a.score
-        })
-        for (var i = 0; i<score.length; i++){
-            var liItems= document.createElement("li")
-            liItems.textContent=score[i].initials + ":" + score[i].score;
-            olEl.appendChild(liItems);
-    }
-    var clearScore = function(){
-        localStorage.clear();
-        olEl.style.display="none";
+         // redirect to next page
+        window.location.href="./highscore.html";
+        
 
     }
     
-    clearBtn.addEventListener("click",clearScore);
-    }
-    var restart =function(){
-        document.location.reload();
-    }
-    var BackBtn = document.getElementById("Back");
-    BackBtn.addEventListener("click",restart);
-    scores();
 }
-var showScore =function(){
-    var x =localStorage.getItem("highScores")
-    return x;
-}
-       
+
+ // user clicks button to start quiz      
 startBtn.addEventListener("click",startQuiz);
+// user clicks button to submit initials
 submitBtn.addEventListener("click",saveScore);
-highScorEl.addEventListener("click",showScore);

@@ -18,36 +18,13 @@ THEN the game is over
 5- WHEN the game is over
 THEN I can save my initials and score
 
+## quize
+the quize meet all must have feature 
+1- the timer start once the user start the quiz then the user presntent with quastion 
+2- timer will start once the user hit start quiz 
+3- if the user answer the question corecct the quiz move to the next question 
+4- if the user did not answer the question the quiz movve to the next question and subtracted 15 second from the quiz 
+5-the user can store the scores every time they try with intials 
 
-1.create a foor loop based on the question array 
-we dont need ul
-2-var answerBtn = document.createElement(btn, )
-3- create another for loop to loop through the answer
-
-
-    //get cuurent question object from the array 
-    var currentQuestion = questions[questionIndex];
-    questionEl.textContent=currentQuestion.question;
-    var questionIndex= 0;
-    4. Inside the for loop
-   Create a button
-   Create a Li
-   Set the text of the button equal to currentQuestion.choices[i]
-   Add an eventListener to the button
-   Append the button to the Li
-   Append the Li to the selectionEl
-
-
-the-question
-
-
-1:00
-And that should do it!
-1:00
-Good luck!!
-
-
-
-        question:"A very usful tool during development and debugging for printing content to the debugger is:",
-        choices:["JavaScript","Terminal / Bush", "For loops","Console.log"],
-        answer:"console.log" i + 1 + "." +
+## TESTING 
+The website been test by multiple user and the result was accepted. 
