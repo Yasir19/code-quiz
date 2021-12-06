@@ -5,10 +5,25 @@ flex-direction: column;
 font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 .quiz{
-    border:3px solid red;
     margin: 80px auto 20px auto;
     padding:30px;
     max-width: 750px;
+}
+.start-btn{
+    background-color: #663399;
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+    text-align: center;
+    border-radius:5px;
+    padding:2px 5px;
+    width:220px;
+    margin-left:280px;
+    
+}
+button:hover{
+    background-color:#a158eb;
+    cursor:pointer;
 }
 .page-title {
     text-align:center;
@@ -16,17 +31,24 @@ font-family:Verdana, Geneva, Tahoma, sans-serif
 .quiz p{
     text-align:center;
 }
-.highScore p {
+.high-score a {
     color:#663399;
+    margin-left: 10px;;
     position:absolute;
     top:0;
     left:0;
+    text-decoration: none;
+
+    
 }
-.highScore:hover{
-    color:#b378ee
+.high-score a:hover{
+    color:#b378ee;
+    cursor:pointer;
+    
 }
 .timer{
     color:#663399;
+    margin-right:10px;
     position:absolute;
     top: 12px;
     right:0;
@@ -34,13 +56,12 @@ font-family:Verdana, Geneva, Tahoma, sans-serif
  button{
     background-color: #663399;
     color:white;
-    font-size:36px;
-    border-radius:12px;
-    max-width:300px;
-    align-items: center;
-    width:200px;
-    top:300px;
-    right:625px;
+    font-size:20px;
+    text-align: left;
+    border-radius:5px;
+    padding:2px 5px;
+    width:220px;
+    align-items: right;
     
 }
 .choice {
@@ -55,30 +76,27 @@ li{
     padding:5px;
 
 }
-.btn{
-    background-color: #663399;
-    color:white;
-    font-size:36px;
-    border-radius:12px;
-    align-items: center;
-    position :absolute;
-    left: 60px;
-    top:210px;
-}
 .question{
-    border:3px solid red; 
+
     margin: 80px auto 20px auto;
     padding:auto 100px;
     display: none;
 }
+.btn{
+    background-color: #663399;
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+    text-align: left;
+    border-radius:5px;
+    padding:2px 5px;
+    width:auto;
+    align-items: right;
+}
 .hidden{
-    border:3px solid red;
     margin: 80px auto 20px auto;
     padding:30px;
     max-width: 750px;
-    /* position: absolute; */
-    bottom:390px;
-    left:550px;
     display: none;
 }
 .hide{
@@ -94,12 +112,8 @@ li{
     display: none;
 }
 .final-score{
-    border:3px solid red;
     margin: 80px auto 20px auto;
     padding:30px;
     max-width: 750px;
-    position:absolute;
-    top:30px;
-    left:470px;
     display: none;
 }

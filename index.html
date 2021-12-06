@@ -13,15 +13,14 @@
             <h1 class="page-title">Coding Quiz Challenge</h1>
                 <P> Try to answer the following code-related qyestion within the time limit.
                      keep in mind that incorrect aswers will penalize yourscore/time by ten seconds! </P>
-                     <button id="start">Start Quize</button>
+                     <button id="start" class="start-btn">Start Quize</button>
         </div>
-        <div class="highScore">
-            <p>View Highscore</p>
+        <div id="highScorese"  class="high-score">
+            <a href="highscore.html">View Highscore</p></a>
         </div>
         <div class="timer">Timer: 
             <span id="time">0</span>
            </div>   
-                     
     </header>
     <section id="questions-list" class="question">
         <h2 id="the-question"></h2>
@@ -30,14 +29,15 @@
     <section id="all-done" class="hidden">
         <h2>All done!</h2>
         <p> Your final Score is</p> 
-        <p>Rnter initials: <input type="text" id="init"/></p>
+        <p>Enter your initials: <input type="text" id="init"/></p>
         <button id="submit" class="btn">Submit</button>
     </section>
     <div id="feedback" class="feedback-style"></div>
     <div id ="sco" class = "final-score">
         <h1>Highscore</h1>
-        <button id=Back>Go Back</button>
-        <button id="Clear">Clear</button>
+        <ol id="highScoreList"></ol>
+        <button id=Back class="btn">Go Back</button>
+        <button id="Clear" class="btn">Clear</button>
     </div>
     <script src="./assets/script.js"></script>
 </body>

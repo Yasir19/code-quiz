@@ -45,6 +45,7 @@ var allDoneEl =document.getElementById("all-done");
 var finalScoreEl=document.getElementById("time");
 var clearBtn =document.getElementById("Clear");
 var scoreEl = document.getElementById("sco");
+var highScorEl = document.getElementById("highScorese");
 
 
 
@@ -129,39 +130,44 @@ var saveScore =function(){
     var initials= inputEl.value.trim()
     //make sure there is intial
     if (initials !==""){
-        var highScores = JSON.parse(window.localStorage.getItem("score")) || [];
+        var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
         var newScore ={
             score : timer,
             initials:initials
         };
         highScores.push(newScore);
-        window.localStorage.setItem("score",JSON.stringify(scores));
+        window.localStorage.setItem("highScores",JSON.stringify(highScores));
         allDoneEl.style.display="none";
-        finalScoreEl.style.display="block";
+        feedbackEl.style.display="none";
         scoreEl.style.display="block";
     }
     //set score
     var scores = function(){
         //git score from localstorage or set to empty array
-        score = JSON.parse(window.localStorage.getItem("score")) || [];
+        score = JSON.parse(window.localStorage.getItem("highScores")) || [];
         //sort the score
         score.sort(function(a,b){
             return b.score - a.score
         })
-        for (var i = 0; i<score; i++){
-            var liItems= document.ceateElement("li")
-            liItems.textContent=score.initials + "-" + score.score;
-            var olEl =document.getElementById("sco");
+        for (var i = 0; i<score.length; i++){
+            var liItems= document.createElement("li")
+            liItems.textContent=score[i].initials + ":" + score[i].score;
+            var olEl =document.getElementById("highScoreList");
             olEl.appendChild(liItems);
     }
     var clearScore = function(){
-        window.localStorage.removeItem("score");
-        window.location.reload();
+        localStorage.clear();
+        olEl.style.display="none";
+
     }
     
     clearBtn.addEventListener("click",clearScore);
     }
-
+    var restart =function(){
+        document.location.reload();
+    }
+    var BackBtn = document.getElementById("Back");
+    BackBtn.addEventListener("click",restart);
     scores();
 }
        
