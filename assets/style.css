@@ -31,7 +31,7 @@ button:hover{
 .quiz p{
     text-align:center;
 }
-.high-score a {
+.high-score p {
     color:#663399;
     margin-left: 10px;;
     position:absolute;
@@ -41,7 +41,7 @@ button:hover{
 
     
 }
-.high-score a:hover{
+.high-score p:hover{
     color:#b378ee;
     cursor:pointer;
     

@@ -45,6 +45,7 @@ var allDoneEl =document.getElementById("all-done");
 var finalScoreEl=document.getElementById("time");
 var clearBtn =document.getElementById("Clear");
 var scoreEl = document.getElementById("sco");
+var olEl =document.getElementById("highScoreList");
 var highScorEl = document.getElementById("highScorese");
 
 
@@ -152,7 +153,6 @@ var saveScore =function(){
         for (var i = 0; i<score.length; i++){
             var liItems= document.createElement("li")
             liItems.textContent=score[i].initials + ":" + score[i].score;
-            var olEl =document.getElementById("highScoreList");
             olEl.appendChild(liItems);
     }
     var clearScore = function(){
@@ -170,6 +170,11 @@ var saveScore =function(){
     BackBtn.addEventListener("click",restart);
     scores();
 }
+var showScore =function(){
+    var x =localStorage.getItem("highScores")
+    return x;
+}
        
 startBtn.addEventListener("click",startQuiz);
 submitBtn.addEventListener("click",saveScore);
+highScorEl.addEventListener("click",showScore);
