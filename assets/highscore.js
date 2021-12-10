@@ -1,12 +1,12 @@
  //set score
  var scores = function(){
-    //git score from localstorage or set to empty array
+    //git score from localStorage or set to empty array
     var score = JSON.parse(window.localStorage.getItem("highScores")) || [];
     //sort the score
     score.sort(function(a,b){
         return b.score - a.score
     })
-    // loop the the new sotred store 
+   // loop the new stored store
     for (var i = 0; i<score.length; i++){
         // create li items 
         var liItems= document.createElement("li");
@@ -27,7 +27,7 @@
 }
 //redefine the clear button 
 clearBtn=document.getElementById("Clear");
-// listen to the click to cleare the score 
+// listen to the click to clear the score 
 clearBtn.addEventListener("click",clearScore);
 // function that back to the quiz 
 var restart =function(){
@@ -36,7 +36,7 @@ var restart =function(){
 }
 //redefine the back button
 var BackBtn = document.getElementById("Back");
-// listen to the click to excute the function
+// listen to the click to execute the function
 BackBtn.addEventListener("click",restart);
  }
 scores();

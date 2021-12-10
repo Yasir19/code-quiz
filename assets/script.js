@@ -31,10 +31,7 @@ var timer=questions.length * 15;
 var questionIndex =0;
 var time;
 var score;
-
-
-
-//veriable to refrence DOM element 
+//variable to reference DOM element
 var questionEl =document.getElementById("questions-list");
 var theQuestionEl= document.getElementById("the-question");
 var selectionEl =document.getElementById("selection");
@@ -57,7 +54,7 @@ var startQuiz = function(){
     var startQuizEl =document.getElementById("start-quiz");
     startQuizEl.setAttribute("class", "hide");
 
-    //revel quastion
+    //show quastions
     questionEl.style.display ="block";
     //set timer
    time = setInterval(timeLeft,1000);
@@ -67,12 +64,11 @@ getQuestion();
 }
 // get question function 
 var getQuestion = function(){
-    
-    // cleare the questionEl and selectionEl
+   // clear the questionEl and selectionEl
     selectionEl.innerHTML="";
-    //get cuurent question object from the array 
+    //get current question object from the array
     var currentQuestion = questions[questionIndex];
-    //update the-question with the current question 
+    //update the question with the current question 
     theQuestionEl.textContent=currentQuestion.question;
     // loop over the choices array 
     for (var i=0;i<= currentQuestion.choices.length; i++){
@@ -88,7 +84,7 @@ var getQuestion = function(){
         choicesBtn.onclick = answerStatus;
     }
 }
-        //check the answerStatus 
+        //check the answer Status
         var answerStatus =function(){
              // get current question object from array
             var correctAnswer = questions[questionIndex];
@@ -96,12 +92,12 @@ var getQuestion = function(){
           if(this.value === correctAnswer.answer){
               //display the feedback element
               feedbackEl.style.display = "block";
-              //diplay correct if the user answer the question 
+              //display correct if the user answer the question 
               feedbackEl.textContent="Correct!"
           }else{
                //display the feedback element
             feedbackEl.style.display = "block";
-             //diplay wrong if the user did not answer the question
+             //display wrong if the user did not answer the question
             feedbackEl.textContent = "Wrong!";
             //reduce the time by 15 if the user did not answer the question
             timer-=15;
@@ -142,7 +138,7 @@ var timeLeft =function(){
 var saveScore =function(){
     // get the value of the input 
     var initials= inputEl.value.trim()
-    //make sure there is intial
+    //make sure there is initial
     if (initials !==""){
         // get saved scores from localstorage, or if not any, set to empty array
         var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
